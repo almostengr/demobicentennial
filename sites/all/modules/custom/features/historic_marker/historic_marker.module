@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Historic Marker feature.
+ */
+
+include_once 'historic_marker.features.inc';
