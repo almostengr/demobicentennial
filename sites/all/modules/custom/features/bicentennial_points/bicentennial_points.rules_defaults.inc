@@ -41,7 +41,7 @@ function bicentennial_points_default_rules_configuration() {
           }
         },
         { "data_set" : { "data" : [ "points-entry:title" ], "value" : "Created account" } },
-        { "data_set" : { "data" : [ "points-entry:uid" ], "value" : [ "site:current-user" ] } },
+        { "data_set" : { "data" : [ "points-entry:uid" ], "value" : [ "account" ] } },
         { "data_set" : { "data" : [ "points-entry:points" ], "value" : "50" } },
         { "entity_save" : { "data" : [ "points-entry" ] } }
       ]
