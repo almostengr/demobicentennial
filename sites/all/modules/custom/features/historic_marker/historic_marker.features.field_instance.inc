@@ -308,9 +308,22 @@ function historic_marker_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
+        'module' => 'simple_gmap',
+        'settings' => array(
+          'apikey' => '',
+          'iframe_height' => 200,
+          'iframe_width' => 200,
+          'include_link' => 0,
+          'include_map' => 1,
+          'include_static_map' => 0,
+          'include_text' => 0,
+          'langcode' => 'en',
+          'link_text' => 'View larger map',
+          'map_type' => 'm',
+          'static_scale' => 1,
+          'zoom_level' => 14,
+        ),
+        'type' => 'simple_gmap',
         'weight' => 2,
       ),
       'teaser' => array(
