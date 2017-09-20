@@ -114,6 +114,13 @@ function historic_marker_default_services_endpoint() {
         ),
       ),
     ),
+    'views' => array(
+      'operations' => array(
+        'retrieve' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
   );
   $endpoint->debug = 1;
   $export['mobileapi'] = $endpoint;
