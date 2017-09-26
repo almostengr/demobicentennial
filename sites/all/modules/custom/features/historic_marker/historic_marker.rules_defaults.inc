@@ -14,16 +14,27 @@ function historic_marker_default_rules_configuration() {
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
       "REQUIRES" : [ "rules" ],
-      "ON" : { "node_insert--historic_marker" : { "bundle" : "historic_marker" } },
+      "ON" : { "node_update--historic_marker" : { "bundle" : "historic_marker" } },
+      "IF" : [
+        { "AND" : [
+            { "data_is" : { "data" : [ "node:status" ], "value" : "1" } },
+            { "data_is" : { "data" : [ "node-unchanged:status" ], "value" : "0" } }
+          ]
+        }
+      ],
       "DO" : [
         { "entity_create" : {
             "USING" : { "type" : "points_log", "param_type" : "points_log" },
             "PROVIDE" : { "entity_created" : { "points_entry" : "points entry" } }
           }
         },
-        { "data_set" : { "data" : [ "points-entry:title" ], "value" : "Submitted marker" } },
-        { "data_set" : { "data" : [ "points-entry:uid" ], "value" : [ "site:current-user" ] } },
-        { "data_set" : { "data" : [ "points-entry:points" ], "value" : "5" } },
+        { "data_set" : {
+            "data" : [ "points-entry:title" ],
+            "value" : "Submitted marker was verified"
+          }
+        },
+        { "data_set" : { "data" : [ "points-entry:uid" ], "value" : [ "node:author" ] } },
+        { "data_set" : { "data" : [ "points-entry:points" ], "value" : "30" } },
         { "entity_save" : { "data" : [ "points-entry" ] } }
       ]
     }

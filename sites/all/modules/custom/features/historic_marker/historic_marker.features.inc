@@ -21,6 +21,67 @@ function historic_marker_views_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_eck_entity_type_info().
+ */
+function historic_marker_eck_entity_type_info() {
+  $items = array(
+    'points_log' => array(
+      'name' => 'points_log',
+      'label' => 'Points Log',
+      'properties' => array(
+        'title' => array(
+          'label' => 'Title',
+          'type' => 'text',
+          'behavior' => 'title',
+        ),
+        'uid' => array(
+          'label' => 'Author',
+          'type' => 'integer',
+          'behavior' => 'author',
+        ),
+        'created' => array(
+          'label' => 'Created',
+          'type' => 'integer',
+          'behavior' => 'created',
+        ),
+        'points' => array(
+          'label' => 'points',
+          'type' => 'integer',
+          'behavior' => 'title',
+        ),
+      ),
+    ),
+    'points_ranking' => array(
+      'name' => 'points_ranking',
+      'label' => 'Points Ranking',
+      'properties' => array(
+        'changed' => array(
+          'label' => 'Changed',
+          'type' => 'integer',
+          'behavior' => 'changed',
+        ),
+        'uid' => array(
+          'label' => 'Author',
+          'type' => 'integer',
+          'behavior' => 'author',
+        ),
+        'rank' => array(
+          'label' => 'rank',
+          'type' => 'integer',
+          'behavior' => 'title',
+        ),
+        'total_points' => array(
+          'label' => 'Total Points',
+          'type' => 'positive_integer',
+          'behavior' => 'title',
+        ),
+      ),
+    ),
+  );
+  return $items;
+}
+
+/**
  * Implements hook_node_info().
  */
 function historic_marker_node_info() {
