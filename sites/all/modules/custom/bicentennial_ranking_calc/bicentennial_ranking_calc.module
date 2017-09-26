@@ -1,0 +1,22 @@
+<?php
+
+/**
+ *
+ * implenments hook_cron()
+ */
+function bicentennial_ranking_calc_cron() {
+  watchdog('bicentennial_ranking_calc', 'Beginning points calculation', array(), WATCHDOG_INFO, NULL);
+
+  $query = "truncate {eck_points_ranking}";
+  $result = db_query($query);
+
+  $query = "insert {eck_points_ranking} (total_points, uid, changed) select sum(points) as points, uid, unix_timestamp() from {eck_points_log} group by uid order by points desc";
+  $result = db_query($query);
+
+  // drupal_set_message("running", 'status');
+  watchdog('bicentennial_ranking_calc', 'Query result :rows', array(':rows' => $result->rowCount()), WATCHDOG_INFO, NULL);
+
+  watchdog('bicentennial_ranking_calc', 'Completed points calculation', array(), WATCHDOG_INFO, NULL);
+}
+
+

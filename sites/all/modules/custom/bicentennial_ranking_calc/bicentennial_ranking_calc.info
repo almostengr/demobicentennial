@@ -1,0 +1,10 @@
+name = Bicentennial Ranking Calculation
+description = Calculates the ranking for the points leaderboard.
+core = 7.x 
+version = 7.x-1.0
+package = Bicentennial Custom
+
+; dependencies[] = historic_marker
+
+files[] = bicentennial_ranking_calc.module
+
